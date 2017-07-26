@@ -14,3 +14,72 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+img{
+    width: 100%;
+}
+.bg-img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+.info{
+    height: 56vw;
+    padding-left: 20px;
+    position: relative;
+    overflow: hidden;
+    .avatar img{
+        margin-top: 35px;
+        border-radius: 100%;
+        width: 80px;
+    }
+    .loginname{
+        color: #fff;
+        font-size: 20px;
+        padding-top: 15px;
+    }
+    .score{
+        color: #eee;
+        font-size: 15px;
+        padding-top: 6px;
+    }
+    .logout{
+        color: #fff;
+        font-size: 15px;
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+    }
+    .login{
+        color: #fff;
+        font-size: 16px;
+        padding-top: 15px;
+    }
+}
+.list{
+    border-top:1px solid #ddd;
+    padding: 8px 0;
+    .item{
+        font-size: 14px;
+        color: #707070;
+        line-height: 44px;
+        min-height: 44px;
+        &.active{
+            background: #f6f6f6;
+            color: map-get($colors, primary);
+        }
+        ion-label{
+            margin: 0;
+        }
+        ion-icon{
+            position: relative;
+            top: 3px;
+            margin-right: 15px;
+            font-size: 22px;
+        }
+        .item-inner{
+            border:none;
+        }
+    }
+}

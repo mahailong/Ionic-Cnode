@@ -12,9 +12,10 @@ import { LoginPage } from '../pages/login/login';
 import { MessagePage } from '../pages/message/message';
 import { PublishPage } from '../pages/publish/publish';
 import { UserPage } from '../pages/user/user';
+import { SettingPage } from '../pages/setting/setting';
 
 import { Api } from '../providers/api';
-import { Items } from '../mocks/providers/items';
+import { Topic } from '../providers/topic';
 import { Settings } from '../providers/settings';
 import { User } from '../providers/user';
 
@@ -45,7 +46,8 @@ export function provideSettings(storage: Storage) {
     LoginPage,
     MessagePage,
     PublishPage,
-    UserPage
+    UserPage,
+    SettingPage
   ],
   imports: [
     HttpModule,
@@ -62,11 +64,12 @@ export function provideSettings(storage: Storage) {
     LoginPage,
     MessagePage,
     PublishPage,
-    UserPage
+    UserPage,
+    SettingPage
   ],
   providers: [
     Api,
-    Items,
+    Topic,
     User,
     StatusBar,
     SplashScreen,

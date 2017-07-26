@@ -1,18 +1,43 @@
 <ion-menu [content]="content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <ion-content>
-    <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
-    </ion-list>
-  </ion-content>
-
+    <div *ngIf="user" className="info">
+        <img src="assets/img/node-bg.png" class="bg-img"/>
+        <div class="avatar">
+            <img src='user.avatar_url' alt="" (click)="openPage('user')"/>
+        </div>
+        <div class="loginname">{{user.loginname}}</div>
+        <div class="score">积分：{{user.score}}</div>
+        <span clas="logout" (click)="logout">注销</span>
+    </div> 
+    <div *ngIf="!user" class="info">
+        <img src="assets/img/node-bg.png" class="bg-img"/>
+        <div class="avatar" menuClose (click)="OtherPage('login')">
+            <img src='assets/img/avatar-default.png' alt=""/>
+        </div>
+        <div class="login">点击头像登录</div>
+    </div>
+    <div class="list">
+        <button menuClose ion-item 
+            *ngFor="let tab of tabs" 
+            (click)="tabChange(tab.key)"
+            [class.active]="tab.key==currentTab">
+            <ion-icon [name]="tab.icon"></ion-icon>
+            <span>{{tab.title}}</span>
+        </button>
+    </div>
+    <div class="list">
+        <button menuClose ion-item (click)="OtherPage('message')">
+            <ion-icon name="notifications"></ion-icon>
+            <span>消息</span>
+        </button>
+        <button menuClose ion-item (click)="OtherPage('setting')">
+            <ion-icon name="settings"></ion-icon>
+            <span>设置</span>
+        </button>
+        <button menuClose ion-item (click)="OtherPage('about')">
+            <ion-icon name="information-circle"></ion-icon>
+            <span>关于</span>
+        </button>
+    </div>
 </ion-menu>
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->

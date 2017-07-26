@@ -1,59 +1,33 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
+import { Observable } from 'rxjs';
+import 'rxjs/Rx'
 
 import { ArticlePage } from '../article/article';
 import { PublishPage } from '../publish/publish';
 
-import { Items } from '../../providers/providers';
-import { Item } from '../../models/item';
+import { Topic } from '../../providers/topic';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  currentItems: Item[];
+  topics: Observable<any[]>;
   constructor(
     public navCtrl: NavController, 
-    public items: Items, 
+    public topicService: Topic, 
     public modalCtrl: ModalController
-  ) {
-    this.currentItems = this.items.query();
-  }
+  ) { }
 
-  /**
-   * The view loaded, let's query our items for the list
-   */
   ionViewDidLoad() {
+    this.topics = this.topicService.getTopics()
+        this.topicService.tabEvent.subscribe(
+      params => this.topics = this.topicService.getTopics(params)
+    )
   }
 
-  /**
-   * Prompt the user to add a new item. This shows our ItemCreatePage in a
-   * modal and then adds the new item to our data source if the user created one.
-   */
-  addItem() {
-    let addModal = this.modalCtrl.create(PublishPage);
-    addModal.onDidDismiss(item => {
-      if (item) {
-        this.items.add(item);
-      }
-    })
-    addModal.present();
-  }
-
-  /**
-   * Delete an item from the list of items.
-   */
-  deleteItem(item) {
-    this.items.delete(item);
-  }
-
-  /**
-   * Navigate to the detail page for this item.
-   */
-  openItem(item: Item) {
-    this.navCtrl.push(ArticlePage, {
-      item: item
-    });
+  openItem(id) {
+    this.navCtrl.push(ArticlePage, {});
   }
 }

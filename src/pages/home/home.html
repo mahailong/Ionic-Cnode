@@ -3,25 +3,23 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>CNode社区</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
  
   <ion-list>
-    <ion-item-sliding *ngFor="let item of currentItems">
+    <ion-item-sliding *ngFor="let topic of topics | async">
       <button ion-item (click)="openItem(item)">
         <ion-avatar item-start>
-          <img [src]="item.profilePic" />
+          <img [src]="topic.author.avatar_url" />
         </ion-avatar>
-        <h2>{{item.name}}</h2>
-        <p>{{item.about}}</p>
-        <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>
+        <h2>{{topic.author.loginname}}</h2>
       </button>
 
       <ion-item-options>
-        <button ion-button color="danger" (click)="deleteItem(item)">删除</button>
+        <button ion-button color="danger" (click)="deleteItem(topic)">删除</button>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list> 

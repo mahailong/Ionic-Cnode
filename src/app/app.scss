@@ -24,37 +24,49 @@ img{
     left: 0;
     z-index: -1;
 }
+input,
+textarea {
+    color: map-get($colors, primary);
+    text-shadow: 0px 0px 0px #000;
+    -webkit-text-fill-color: transparent;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder{
+    text-shadow: none;
+    -webkit-text-fill-color: initial;
+}
 .info{
-    height: 56vw;
-    padding-left: 20px;
+    height: 48vw;
+    padding-left: 6vw;
     position: relative;
     overflow: hidden;
     .avatar img{
-        margin-top: 35px;
+        margin-top: 6vw;
         border-radius: 100%;
-        width: 80px;
+        width: 20vw;
     }
     .loginname{
         color: #fff;
-        font-size: 20px;
-        padding-top: 15px;
+        font-size: 5vw;
+        padding-top: 2vw;
     }
     .score{
         color: #eee;
         font-size: 15px;
-        padding-top: 6px;
+        padding-top: 1vw;
     }
     .logout{
         color: #fff;
-        font-size: 15px;
+        font-size: 3vw;
         position: absolute;
-        bottom: 20px;
-        right: 20px;
+        bottom: 1vw;
+        right: 1vw;
     }
     .login{
         color: #fff;
-        font-size: 16px;
-        padding-top: 15px;
+        font-size: 4.2vw;
+        padding-top: 5vw;
     }
 }
 .list{
@@ -63,8 +75,8 @@ img{
     .item{
         font-size: 14px;
         color: #707070;
-        line-height: 44px;
-        min-height: 44px;
+        line-height: 38px;
+        min-height: 38px;
         &.active{
             background: #f6f6f6;
             color: map-get($colors, primary);

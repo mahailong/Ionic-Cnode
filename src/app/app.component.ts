@@ -9,7 +9,7 @@ import { AboutPage } from '../pages/about/about';
 import { SettingPage } from '../pages/setting/setting';
 import { MessagePage } from '../pages/message/message';
 
-import { Topic } from '../providers/topic';
+import { TopicService } from '../providers/topic';
 
 @Component({
   templateUrl: 'app.html'
@@ -24,7 +24,7 @@ export class MyApp {
   currentTab: string = "all";
 
   constructor(
-    public topicService: Topic, 
+    public topicService: TopicService, 
     public platform: Platform, 
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen

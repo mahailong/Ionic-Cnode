@@ -1,16 +1,15 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Http } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 
-import { Api } from './api';
+import { ApiService } from './api';
 
 @Injectable()
-export class Topic {
+export class TopicService {
 
   tabEvent: EventEmitter<any> = new EventEmitter();
 
-  constructor(public http: Http, public api: Api) {
+  constructor(public api: ApiService) {
   }
 
   getTopics(params?: any): Observable<any[]> {

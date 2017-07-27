@@ -25211,43 +25211,56 @@ img {
   z-index: -1;
 }
 
+input,
+textarea {
+  color: #80bd01;
+  text-shadow: 0px 0px 0px #000;
+  -webkit-text-fill-color: transparent;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  text-shadow: none;
+  -webkit-text-fill-color: initial;
+}
+
 .info {
-  height: 56vw;
-  padding-left: 20px;
+  height: 48vw;
+  padding-left: 6vw;
   position: relative;
   overflow: hidden;
 }
 
 .info .avatar img {
-  margin-top: 35px;
+  margin-top: 6vw;
   border-radius: 100%;
-  width: 80px;
+  width: 20vw;
 }
 
 .info .loginname {
   color: #fff;
-  font-size: 20px;
-  padding-top: 15px;
+  font-size: 5vw;
+  padding-top: 2vw;
 }
 
 .info .score {
   color: #eee;
   font-size: 15px;
-  padding-top: 6px;
+  padding-top: 1vw;
 }
 
 .info .logout {
   color: #fff;
-  font-size: 15px;
+  font-size: 3vw;
   position: absolute;
-  bottom: 20px;
-  right: 20px;
+  bottom: 1vw;
+  right: 1vw;
 }
 
 .info .login {
   color: #fff;
-  font-size: 16px;
-  padding-top: 15px;
+  font-size: 4.2vw;
+  padding-top: 5vw;
 }
 
 .list {
@@ -25258,8 +25271,8 @@ img {
 .list .item {
   font-size: 14px;
   color: #707070;
-  line-height: 44px;
-  min-height: 44px;
+  line-height: 38px;
+  min-height: 38px;
 }
 
 .list .item.active {
@@ -25280,4 +25293,84 @@ img {
 
 .list .item .item-inner {
   border: none;
+}
+
+page-login .content {
+  background: #f6f6f6;
+}
+
+page-login .scroll-content {
+  margin-top: 0 !important;
+}
+
+page-login .toolbar-background {
+  background: none;
+  border: none !important;
+}
+
+page-login .logo-wrapper {
+  position: relative;
+  width: 100%;
+  height: 46vw;
+}
+
+page-login .logo-wrapper .bg {
+  width: 100%;
+}
+
+page-login .logo-wrapper .logo {
+  position: absolute;
+  top: 20vw;
+  left: 10vw;
+  width: 80vw;
+}
+
+page-login form {
+  position: relative;
+  z-index: 100;
+  background: #fff;
+  margin: 5vw;
+  border-radius: 3px;
+  overflow: hidden;
+  -webkit-box-shadow: 0px 1px 5px #888;
+  box-shadow: 0px 1px 5px #888;
+  padding: 5vw;
+}
+
+page-login form .text-input {
+  padding: 10px 0;
+  margin-right: 0;
+  width: 100%;
+  border-bottom: 1px solid #80bd01;
+}
+
+page-login form .button {
+  height: 36px;
+  font-size: 13px;
+  border-radius: 3px;
+}
+
+page-login form .type-group {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px 0;
+}
+
+page-login form .type-group .type {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 12px;
+  line-height: 21px;
+  color: #666;
+  vertical-align: top;
+}
+
+page-login form .type-group .type ion-icon {
+  font-size: 20px;
+  padding: 0 10px;
+  vertical-align: top;
 }

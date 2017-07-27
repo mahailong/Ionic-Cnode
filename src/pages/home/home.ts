@@ -6,7 +6,7 @@ import 'rxjs/Rx'
 import { ArticlePage } from '../article/article';
 import { PublishPage } from '../publish/publish';
 
-import { Topic } from '../../providers/topic';
+import { TopicService } from '../../providers/topic';
 
 @Component({
   selector: 'page-home',
@@ -16,7 +16,7 @@ export class HomePage {
   topics: Observable<any[]>;
   constructor(
     public navCtrl: NavController, 
-    public topicService: Topic, 
+    public topicService: TopicService, 
     public modalCtrl: ModalController
   ) { }
 

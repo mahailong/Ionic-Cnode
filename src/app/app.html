@@ -1,6 +1,6 @@
 <ion-menu [content]="content">
     <div *ngIf="user" className="info">
-        <img src="assets/img/node-bg.png" class="bg-img"/>
+        <img src="assets/img/main_nav_header_bg.png" class="bg-img"/>
         <div class="avatar">
             <img src='user.avatar_url' alt="" (click)="openPage('user')"/>
         </div>
@@ -9,9 +9,9 @@
         <span clas="logout" (click)="logout">注销</span>
     </div> 
     <div *ngIf="!user" class="info">
-        <img src="assets/img/node-bg.png" class="bg-img"/>
+        <img src="assets/img/main_nav_header_bg.png" class="bg-img"/>
         <div class="avatar" menuClose (click)="OtherPage('login')">
-            <img src='assets/img/avatar-default.png' alt=""/>
+            <img src='assets/img/image_placeholder.png' alt=""/>
         </div>
         <div class="login">点击头像登录</div>
     </div>

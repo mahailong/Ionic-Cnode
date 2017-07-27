@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
  * Api is a generic REST Api handler. Set your API url first.
  */
 @Injectable()
-export class Api {
+export class ApiService {
   url: string = 'https://cnodejs.org/api/v1';
 
   constructor(public http: Http) {

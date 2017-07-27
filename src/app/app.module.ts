@@ -14,28 +14,17 @@ import { PublishPage } from '../pages/publish/publish';
 import { UserPage } from '../pages/user/user';
 import { SettingPage } from '../pages/setting/setting';
 
-import { Api } from '../providers/api';
-import { Topic } from '../providers/topic';
-import { Settings } from '../providers/settings';
-import { User } from '../providers/user';
+import { ApiService } from '../providers/api';
+import { TopicService } from '../providers/topic';
+import { StorageService } from '../providers/storage';
+import { UserService } from '../providers/user';
+import { UtilService } from '../providers/util';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { AppVersion } from '@ionic-native/app-version';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
-export function provideSettings(storage: Storage) {
-  /**
-   * The Settings provider takes a set of default settings for your app.
-   *
-   * You can add new settings options at any time. Once the settings are saved,
-   * these values will not overwrite the saved values (this can be done manually if desired).
-   */
-  return new Settings(storage, {
-    option1: true,
-    option2: 'Ionitron J. Framework',
-    option3: '3',
-    option4: 'Hello'
-  });
-}
 
 @NgModule({
   declarations: [
@@ -68,13 +57,16 @@ export function provideSettings(storage: Storage) {
     SettingPage
   ],
   providers: [
-    Api,
-    Topic,
-    User,
     StatusBar,
+    AppVersion,
+    BarcodeScanner,
     SplashScreen,
-    { provide: Settings, useFactory: provideSettings, deps: [Storage] },
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    ApiService,
+    UtilService,
+    TopicService,
+    UserService,
+    StorageService,
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
 export class AppModule {}

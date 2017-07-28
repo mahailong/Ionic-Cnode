@@ -27733,6 +27733,7 @@ page-home .item .content .right .reply {
 .themeDark .item {
   background: #454545;
   color: #fff;
+  border-bottom: 1px solid #666;
 }
 
 .themeDark .item span {

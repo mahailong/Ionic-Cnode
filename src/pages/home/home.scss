@@ -93,6 +93,7 @@ page-home {
     .item{
         background: map-get($colors, dark);
         color: #fff;
+        border-bottom: 1px solid #666;
         span{
             color: #fff!important;
         }

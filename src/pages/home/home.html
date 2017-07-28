@@ -8,20 +8,44 @@
 </ion-header>
 
 <ion-content>
- 
+   <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles" refreshingText="正在刷新...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-fab right bottom>
+    <button ion-fab color="secondary" (click)="openPublish()"><ion-icon name="create"></ion-icon></button>
+  </ion-fab>
   <ion-list>
-    <ion-item-sliding *ngFor="let topic of topics | async">
-      <button ion-item (click)="openItem(item)">
-        <ion-avatar item-start>
-          <img [src]="topic.author.avatar_url" />
-        </ion-avatar>
-        <h2>{{topic.author.loginname}}</h2>
-      </button>
-
-      <ion-item-options>
-        <button ion-button color="danger" (click)="deleteItem(topic)">删除</button>
-      </ion-item-options>
-    </ion-item-sliding>
+    <div class="item" *ngFor="let topic of topics" (click)="openItem(topic.id)">
+      <div class="title">
+        <span *ngIf="topic.top" class="top">置顶</span>
+        <span *ngIf="!topic.top">{{tabObj[topic.tab] || '全部'}}</span>
+        {{topic.title}}
+      </div>
+      <img *ngIf="topic.good" class="isgood" src='assets/img/tab_ic_good.png' alt=""/>
+      <div class="content clearfix">
+        <span (click)="openUserPage(topic.author.loginname, $event)" class="avatar">
+          <img [src]="topic.author.avatar_url"/>
+        </span>
+        <span class="right">
+          <div>
+            <span class="name">{{topic.author.loginname}}</span>
+            <span class="float-r">
+              <span class="reply">{{topic.reply_count}}</span>/
+              <span>{{topic.visit_count}}</span>
+            </span>
+          </div>
+          <div>
+             <span>创建于：{{topic.create_at | date:"yyyy-MM-dd hh:mm:ss"}}</span> 
+            <span class="float-r">{{topic.last_reply_at | amAgoTime}}</span>
+          </div>
+        </span>
+      </div>
+    </div>
   </ion-list> 
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="正在加载...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
 

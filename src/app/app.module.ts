@@ -16,15 +16,27 @@ import { SettingPage } from '../pages/setting/setting';
 
 import { ApiService } from '../providers/api';
 import { TopicService } from '../providers/topic';
-import { StorageService } from '../providers/storage';
-import { UserService } from '../providers/user';
+import { UserService} from '../providers/user';
+import { Settings } from '../providers/settings';
 import { UtilService } from '../providers/util';
+
+import { AmAgoTimePipe, LinkPipe } from '../pipe/'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AppVersion } from '@ionic-native/app-version';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
+export function provideSettings(storage: Storage) {
+  return new Settings (storage, {
+    user: {
+      loginname: '',
+      avatar_url:  '',
+      accesstoken : ''
+    },
+    themeDark: false
+  });
+}
 
 @NgModule({
   declarations: [
@@ -36,7 +48,9 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     MessagePage,
     PublishPage,
     UserPage,
-    SettingPage
+    SettingPage,
+    AmAgoTimePipe,
+    LinkPipe
   ],
   imports: [
     HttpModule,
@@ -65,7 +79,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     UtilService,
     TopicService,
     UserService,
-    StorageService,
+    { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })

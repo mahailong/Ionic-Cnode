@@ -36,47 +36,52 @@ textarea::-webkit-input-placeholder{
     text-shadow: none;
     -webkit-text-fill-color: initial;
 }
+.theme-button{
+    position: absolute;
+    top:5vw;
+    right:5vw;
+    color: #fff;
+    font-size: 8vw;
+    background: none; 
+    z-index: 200;
+}
 .info{
     height: 48vw;
     padding-left: 6vw;
     position: relative;
     overflow: hidden;
-    .avatar img{
-        margin-top: 6vw;
+    .avatar{
+        width: 22vw;
+        height: 22vw;
+        margin-top: 8vw;
         border-radius: 100%;
-        width: 20vw;
-    }
-    .loginname{
-        color: #fff;
-        font-size: 5vw;
-        padding-top: 2vw;
-    }
-    .score{
-        color: #eee;
-        font-size: 15px;
-        padding-top: 1vw;
+        overflow: hidden;
     }
     .logout{
         color: #fff;
-        font-size: 3vw;
+        font-size: 4vw;
         position: absolute;
-        bottom: 1vw;
-        right: 1vw;
+        bottom: 6vw;
+        right: 6vw;
     }
-    .login{
+    .loginname, .login{
         color: #fff;
-        font-size: 4.2vw;
-        padding-top: 5vw;
+        font-size: 4.5vw;
+        padding-top: 6vw;
     }
 }
 .list{
-    border-top:1px solid #ddd;
+    border-bottom:1px solid #ddd;
     padding: 8px 0;
+    &:last-child{
+        border: none!important;
+    }
     .item{
         font-size: 14px;
         color: #707070;
         line-height: 38px;
         min-height: 38px;
+        transition: none;
         &.active{
             background: #f6f6f6;
             color: map-get($colors, primary);
@@ -92,6 +97,24 @@ textarea::-webkit-input-placeholder{
         }
         .item-inner{
             border:none;
+            background-image: none!important;
+        }
+    }
+}
+.themeDark{
+    .menu-inner{
+        background: map-get($colors, dark);
+        .info{
+            background: map-get($colors, bar);
+        }
+        .list{
+            border-bottom: 1px solid #777;
+            .item{
+                background: map-get($colors, dark);
+                &.active{
+                    background: #565656;
+                }
+            }
         }
     }
 }

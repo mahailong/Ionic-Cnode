@@ -1,4 +1,7 @@
 page-login {
+    .header::after{
+        background: none;
+    }
     .content{
         background: #f6f6f6;
     }
@@ -34,7 +37,7 @@ page-login {
         padding: 5vw;
         .text-input{
             padding: 10px 0;
-            margin-right: 0;
+            margin: 10px 0;
             width: 100%;
             border-bottom: 1px solid map-get($colors, primary);
         }

@@ -111,6 +111,7 @@ textarea::-webkit-input-placeholder{
             border-bottom: 1px solid #777;
             .item{
                 background: map-get($colors, dark);
+                border: none;
                 &.active{
                     background: #565656;
                 }

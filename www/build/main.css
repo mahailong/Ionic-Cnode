@@ -27610,6 +27610,7 @@ textarea::-webkit-input-placeholder {
 
 .themeDark .menu-inner .list .item {
   background: #454545;
+  border: none;
 }
 
 .themeDark .menu-inner .list .item.active {

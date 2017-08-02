@@ -7,8 +7,8 @@
         <div class="info">
             <img *ngIf="!themeDark" src="assets/img/main_nav_header_bg.png" class="bg-img"/>
             <div class="avatar" menuClose>
-                <img *ngIf="user.avatar_url" [src]='user.avatar_url' (click)="openPage('user')"/>
-                <img *ngIf="!user.avatar_url" src='assets/img/image_placeholder.png' (click)="OtherPage('login')"/>
+                <img *ngIf="user.avatar_url" [src]='user.avatar_url' (click)="openUser(user.loginname)"/>
+                <img *ngIf="!user.avatar_url" src='assets/img/image_placeholder.png' (click)="openPage('login')"/>
             </div>
             <div class="loginname" menuClose>{{user.loginname || "点击头像登录"}}</div>
             <span *ngIf="user.loginname" class="logout" (click)="logout()">注销</span>
@@ -23,15 +23,15 @@
             </button>
         </div>
         <div class="list">
-            <button menuClose ion-item (click)="OtherPage('message')">
+            <button menuClose ion-item (click)="openMessage()">
                 <ion-icon name="notifications"></ion-icon>
                 <span>消息</span>
             </button>
-            <button menuClose ion-item (click)="OtherPage('setting')">
+            <button menuClose ion-item (click)="openPage('setting')">
                 <ion-icon name="settings"></ion-icon>
                 <span>设置</span>
             </button>
-            <button menuClose ion-item (click)="OtherPage('about')">
+            <button menuClose ion-item (click)="openPage('about')">
                 <ion-icon name="information-circle"></ion-icon>
                 <span>关于</span>
             </button>

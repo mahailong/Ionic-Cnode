@@ -1,3 +1,20 @@
 page-setting {
-
+    .title{
+        color: map-get($colors, primary);
+        font-size: 13px;
+        padding: 0 16px;
+    }
+    .list{
+        border: none;
+        .item{
+            border: none!important;
+            .item-inner{
+                border: none;
+            }
+            input{
+                text-shadow: none;
+                -webkit-text-fill-color: inherit;
+            }
+        }
+    }
 }

@@ -6,11 +6,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { AboutPage } from '../pages/about/about';
+import { UserPage } from '../pages/user/user';
 import { SettingPage } from '../pages/setting/setting';
 import { MessagePage } from '../pages/message/message';
 
 import { TopicService } from '../providers/topic';
 import { Settings } from '../providers/settings';
+import { UtilService } from '../providers/util';
 
 @Component({
   templateUrl: 'app.html'
@@ -29,6 +31,7 @@ export class MyApp {
   constructor(
     public topicService: TopicService,
     public settings: Settings,
+    public utilService: UtilService,
     public platform: Platform,
     public events: Events,
     public statusBar: StatusBar, 
@@ -40,7 +43,7 @@ export class MyApp {
     events.subscribe('user', user=>this.user = user);
     
     settings.getValue('themeDark').then(themeDark=>this.themeDark = themeDark);
-    events.subscribe('themeDark', themeDark =>this.themeDark = themeDark);
+    events.subscribe('themeDark', themeDark => this.toggleTheme());
 
     this.initializeApp();
 
@@ -53,11 +56,9 @@ export class MyApp {
     ]
 
     this.pages = {
-      'home': HomePage,
       'login': LoginPage,
-      'message': MessagePage,
       'setting': SettingPage,
-      'about': AboutPage
+      'about': AboutPage,
     }
   }
 
@@ -80,11 +81,21 @@ export class MyApp {
 
   tabChange(key) {
     this.currentTab = key
-    this.topicService.tabEvent.emit(key)
+    this.events.publish('tab', key)
   }
 
-  OtherPage(page) {
+  openPage(page) {
     this.nav.push(this.pages[page]);
   }
 
+  openUser(loginname) {
+    this.nav.push(UserPage, {loginname});
+  }
+
+  openMessage(){
+    this.utilService.checkLogin(
+      () => this.nav.push(MessagePage, {...this.user}),
+      () => this.nav.push(LoginPage)
+    );
+  }
 }

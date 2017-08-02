@@ -13,7 +13,7 @@
     </ion-refresher-content>
   </ion-refresher>
   <ion-fab right bottom>
-    <button ion-fab color="secondary" (click)="openPublish()"><ion-icon name="create"></ion-icon></button>
+    <button ion-fab color="#80bd01" (click)="openPublish()"><ion-icon name="create"></ion-icon></button>
   </ion-fab>
   <ion-list>
     <div class="item" *ngFor="let topic of topics" (click)="openItem(topic.id)">
@@ -24,7 +24,7 @@
       </div>
       <img *ngIf="topic.good" class="isgood" src='assets/img/tab_ic_good.png' alt=""/>
       <div class="content clearfix">
-        <span (click)="openUserPage(topic.author.loginname, $event)" class="avatar">
+        <span (click)="openUser(topic.author.loginname,$event)" class="avatar">
           <img [src]="topic.author.avatar_url"/>
         </span>
         <span class="right">
@@ -36,7 +36,7 @@
             </span>
           </div>
           <div>
-             <span>创建于：{{topic.create_at | date:"yyyy-MM-dd hh:mm:ss"}}</span> 
+            <span>创建于：{{topic.create_at | date:"yyyy-MM-dd hh:mm:ss"}}</span> 
             <span class="float-r">{{topic.last_reply_at | amAgoTime}}</span>
           </div>
         </span>

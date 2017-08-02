@@ -1,3 +1,123 @@
 page-user {
-
+    ion-navbar{
+        position: absolute;
+        z-index: 100;
+    }
+    .content{
+        background: #f6f6f6;
+    }
+    .scroll-content{
+        margin-top: 0!important;
+    }
+    .toolbar-background{
+        background: none;
+        border: none!important;
+    }
+    .bg{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1;
+        height: 225px;
+    }
+    .user-detail{
+        position: relative;
+        height: 225px;
+        padding: 20px;
+        text-align: center;
+        color: #fff;
+        z-index: 10;
+        .avatar img{
+            width: 100px;
+            border-radius: 100%;
+        }
+        .loginname{
+            font-size: 18px;
+            padding-top: 5px;
+        }
+        .githubname{
+            font-size: 15px;
+            color: #ccc;
+            padding-top: 3px;
+        }
+        .foot{
+            text-align: left;
+            font-size: 13px;
+            padding-top: 20px;
+            .score{
+                color: #80bd01;
+                float: right;
+            }
+        }
+    }
+    .segment{
+        .segment-button{
+            position: relative;
+            border-width: 0;
+            color: #fff;
+            background: #333;
+            font-size: 14px;
+            border-radius: 0!important;
+            opacity: 1;
+            &::after{
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 4px;
+                border-radius: 2px;
+                left: 50%;
+                bottom:0;
+                z-index: 100;
+                transition: all .3s;
+                background: #80bd01;
+            }
+        }
+        .segment-activated{
+            background: #333!important;
+            &::after{
+                width: 100%;
+                left: 0;
+            }
+        }
+    }
+    ion-scroll{
+        height: calc(100vh - 51px);
+        ._item{
+            display: flex;
+            width: 100vw;
+            height: 77px;
+            overflow: hidden;
+            padding: 15px;
+            box-sizing: border-box;
+            color: #000;
+            border-bottom: 1px solid #eee;
+            .avatar img{
+                width: 45px;
+                height: 45px;
+                border-radius: 100%;
+                overflow: hidden;
+            }
+            .right {
+                width: calc(100% - 45px);
+                font-size: 13px;
+                line-height: 18px;
+                padding-left: 7px;
+                float: left;
+                box-sizing: border-box;
+                .title{
+                    width: 100%;
+                    font-size: 15px;
+                    padding-top: 3px;
+                    padding-bottom: 7px;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+                .name{
+                    font-size: 14px;
+                }
+            }
+        }
+    }
 }

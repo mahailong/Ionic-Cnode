@@ -1,3 +1,175 @@
 page-article {
-
+    background: #fff;
+    width: 100vw;
+    overflow: hidden;
+    box-sizing: border-box;
+    >.content{
+        color: #777;
+    }
+    .head{
+        padding: 0 15px;
+        padding-top: 15px;
+        color: #000;
+        position: relative;
+        .title{
+            font-size: 17px;
+            padding-bottom: 12px;
+            font-weight: 900;
+        }
+        .isgood{
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 50px;
+        }
+        .content{
+            display: flex;
+            position: relative;
+            .publish{
+                position: absolute;
+                top: 8px;
+                right: 50px;
+                font-size: 20px;
+                color: #80bd01;
+            }
+            .collect{
+                position: absolute;
+                top: 8px;
+                right: 16px;
+                font-size: 20px;
+                color: #80bd01;
+            }
+            .avatar{
+                display: block;
+                width: 40px;
+                height: 40px;
+                border-radius: 100%;
+                overflow: hidden;
+                float: left;
+            }
+            .right {
+                flex:1;
+                color: #888;
+                font-size: 14px;
+                line-height: 21px;
+                padding-left: 7px;
+                float: left;
+                box-sizing: border-box;
+                .name{
+                    font-size: 17px;
+                    span{
+                        font-size: 13px;
+                        background: #eee;
+                        color: #888;
+                        padding: 2px 4px;
+                        border-radius: 3px;
+                        margin-right: 8px;
+                        position: relative;
+                        top: -2px;
+                    }
+                    .top{
+                        background: #80bd01;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+    .body{
+        padding: 0 15px;
+        border-bottom: 2px solid #e3e3e3;
+        img{
+            width: 100%;
+        }
+    }
+    .foot{
+        border-top: 5px solid #f1f1f1;
+        padding-bottom: 120px;
+        .count{
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .reply-item{
+            padding: 15px;
+            padding-bottom: 0;
+            position: relative;
+            border-bottom: 1px solid #eee;
+            .title{
+                font-size: 17px;
+                img{
+                    width: 100%;
+                }
+            }
+            .isgood{
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                width: 30px;
+            }
+            .reply-index{
+                color: #80bd01;
+                font-size: 14px;
+                padding-top: 10px;
+            }
+            .content{
+                display: flex;
+                .avatar{
+                    display: block;
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 100%;
+                    overflow: hidden;
+                    float: left;
+                }
+                .icon-group{
+                    padding-top: 6px;
+                    display: flex;
+                    align-items: center;
+                    color: #777;
+                    font-size: 17px;
+                    .active{
+                        color: #80bd01;
+                    }
+                    .length{
+                        font-size: 14px;
+                        display: inline-block;
+                        width: 34px;
+                        text-align: center;
+                    }
+                }
+                .right {
+                    flex:1;
+                    color: #888;
+                    font-size: 14px;
+                    line-height: 26px;
+                    padding-left: 7px;
+                    float: left;
+                    box-sizing: border-box;
+                    .name{
+                        font-size: 17px;
+                        span{
+                            font-size: 13px;
+                            background: #eee;
+                            color: #888;
+                            padding: 2px 4px;
+                            border-radius: 3px;
+                            margin-right: 8px;
+                            position: relative;
+                            top: -2px;
+                        }
+                        .top{
+                            background: #80bd01;
+                            color: #fff;
+                        }
+                    }
+                    .index{
+                        color: #80bd01;
+                    }
+                }
+            }
+        }
+    }
+    ion-fab{
+        position: fixed;
+    }
 }

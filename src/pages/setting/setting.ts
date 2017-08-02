@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the SettingPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import { NavController, NavParams, Events } from 'ionic-angular';
+import { Settings } from '../../providers/settings';
 
 @Component({
   selector: 'page-setting',
@@ -14,11 +8,27 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class SettingPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  themeDark: boolean = false;
+  tail_on: boolean = false;
+  tail_text: string;
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public settings: Settings, 
+    public events: Events
+  ) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SettingPage');
+    this.settings.getValue('themeDark').then(themeDark=>this.themeDark = themeDark);
+    this.settings.getValue('tail_on').then(tail_on=>this.tail_on = tail_on);
+    this.settings.getValue('tail_text').then(tail_text=>this.tail_text = tail_text);
+  }
+
+  setting() {
+    this.events.publish('themeDark')
+    this.settings.setValue('tail_on',this.tail_on)
+    this.settings.setValue('tail_text',this.tail_text)
   }
 
 }

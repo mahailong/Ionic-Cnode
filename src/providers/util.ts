@@ -1,44 +1,16 @@
 import { Injectable } from '@angular/core';
-import { ToastController } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
+import { ToastController, AlertController } from 'ionic-angular';
+
+import { Settings } from '../providers/settings';
 
 @Injectable()
 export class UtilService {
 
-  constructor(private toastCtrl: ToastController, private storage: Storage) { }
-
-  getTabs(): Array<{ key: string, value: string, icon: string }> {
-    return [{
-      key: 'all',
-      value: '全部',
-      icon: 'home'
-    },
-    {
-      key: 'good',
-      value: '精华',
-      icon: 'star'
-    },
-    {
-      key: 'share',
-      value: '分享',
-      icon: 'share'
-    },
-    {
-      key: 'ask',
-      value: '问答',
-      icon: 'chatbubbles'
-    },
-    {
-      key: 'job',
-      value: '招聘',
-      icon: 'briefcase'
-    },
-    {
-      key: 'dev',
-      value: '客户端测试',
-      icon: 'bug'
-    }]
-  }
+  constructor(
+    private toastCtrl: ToastController, 
+    private alertCtrl: AlertController,
+    private settings: Settings,
+  ) { }
 
   toast(message: string) {
     this.toastCtrl.create({
@@ -48,13 +20,28 @@ export class UtilService {
     }).present();
   }
 
-  getLoginStatus() {
-    return this.storage.get('user').then((val) => {
-      return val;
-    })
-  }
-
-  getHtmlText(str: string) {
-    return str.replace(/<[^>]+>/g, '');
+  checkLogin(callback1:any, callback2:any) {
+    this.settings.getValue('user').then(user=>{
+      if(user.loginname){
+        callback1()
+      }else{
+        let confirm = this.alertCtrl.create({
+          title: '',
+          message: '该操作需要登录账户。是否现在登录?',
+          buttons: [
+            {
+              text: '取消'
+            },
+            {
+              text: '登录',
+              handler: () => {
+                callback2()
+              }
+            }
+          ]
+        });
+        confirm.present();
+      }
+    });
   }
 }

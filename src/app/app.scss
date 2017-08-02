@@ -36,6 +36,9 @@ textarea::-webkit-input-placeholder{
     text-shadow: none;
     -webkit-text-fill-color: initial;
 }
+.back-button-text{
+    display: none;
+}
 .theme-button{
     position: absolute;
     top:5vw;
@@ -94,6 +97,8 @@ textarea::-webkit-input-placeholder{
             top: 3px;
             margin-right: 15px;
             font-size: 22px;
+            width: 22px;
+            text-align: center;
         }
         .item-inner{
             border:none;
@@ -119,3 +124,19 @@ textarea::-webkit-input-placeholder{
         }
     }
 }
+.themeDark{
+    .content{
+        background: #454545;
+        color: #fff;
+    }
+    .theme-font{
+        color: #fff;
+    }
+    .theme-border{
+        border-color: #666; 
+    }
+    .theme-background{
+        background: #454545;
+    }
+}
+

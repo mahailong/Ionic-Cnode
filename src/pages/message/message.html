@@ -7,12 +7,39 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>login</ion-title>
+    <ion-title>消息</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="markALL()">
+        <ion-icon name="done-all"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content>
+  <div class="_item" *ngFor="let item of msgs" (click)="markOne(item)"> 
+    <div class="item-info clearfix">
+        <span (click)="openUser(item.author.loginname)" class="avatar">
+            <img [src]="item.author.avatar_url" class="full-img"/>
+        </span>
+        <span (click)="openArticle(item.topic.id)" class="right">
+            <div>
+                <span class="name">{{item.author.loginname}}</span>
+                    <span class="float-r" [class.primary]="!item.has_read">
+                        <span class="dot" *ngIf="!item.has_read"></span>
+                        {{item.reply.create_at | date:"yyyy-MM-dd hh:mm:ss"}}
+                    </span>
+            </div>
+            <div>{{item.type=='at'? '在回复中@了你': '回复了您的话题'}}</div>
+        </span>
+    </div>
+    <div class="content">
+      <div [innerHtml]="item.reply.content"></div>
+    </div>
+    <span (click)="openArticle(item.topic.id)" class="topic">
+        话题：{{item.topic.title}}
+    </span>
+  </div>
 </ion-content>

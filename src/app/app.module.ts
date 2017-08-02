@@ -11,6 +11,7 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { MessagePage } from '../pages/message/message';
 import { PublishPage } from '../pages/publish/publish';
+import { ReplyPage } from '../pages/reply/reply';
 import { UserPage } from '../pages/user/user';
 import { SettingPage } from '../pages/setting/setting';
 
@@ -34,7 +35,9 @@ export function provideSettings(storage: Storage) {
       avatar_url:  '',
       accesstoken : ''
     },
-    themeDark: false
+    themeDark: false,
+    tail_on: false,
+    tail_text: ''
   });
 }
 
@@ -46,6 +49,7 @@ export function provideSettings(storage: Storage) {
     HomePage,
     LoginPage,
     MessagePage,
+    ReplyPage,
     PublishPage,
     UserPage,
     SettingPage,
@@ -67,6 +71,7 @@ export function provideSettings(storage: Storage) {
     LoginPage,
     MessagePage,
     PublishPage,
+    ReplyPage,
     UserPage,
     SettingPage
   ],

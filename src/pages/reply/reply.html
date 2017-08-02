@@ -1,0 +1,22 @@
+<div class="reply-wrapper" [class.themeDark]="themeDark">
+  <ion-header>
+
+    <ion-navbar>
+      <ion-title>评论</ion-title>
+      <ion-buttons start>
+        <button ion-button (click)="dismiss()">
+          <ion-icon name="md-close"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+
+  </ion-header>
+
+
+  <ion-content padding>
+    <form (submit)="submit()">
+      <textarea type="text" placeholder="请输入评论内容" [(ngModel)]="content" name="content" class="theme-background"></textarea>
+      <button ion-button color="primary" block>提交</button>
+    </form>
+  </ion-content>
+</div>

@@ -1,18 +1,75 @@
-<!--
-  Generated template for the UserPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
+<ion-content>
+  <ion-navbar></ion-navbar>
+  <img src="assets/img/user_detail_header_bg.png" class="bg"/>
+  <div class="user-detail" *ngIf="data">
+    <div class="avatar">
+        <img [src]="data.avatar_url" alt=""/>
+    </div>
+    <div class="loginname">{{data.loginname}}</div>
+    <div class="githubname">{{data.githubUsername}}@github.com</div>
+    <div class="foot">
+        <span>注册时间：{{data.create_at | date:"yyyy-MM-dd"}}</span>
+        <span class="score">积分：{{data.score}}</span>
+    </div>
+  </div>
+  <ion-segment [(ngModel)]="segment">
+    <ion-segment-button value="replies">
+      最近回复
+    </ion-segment-button>
+    <ion-segment-button value="topics">
+      最新发布
+    </ion-segment-button>
+    <ion-segment-button value="collect">
+      话题收藏
+    </ion-segment-button>
+  </ion-segment>
 
-  <ion-navbar>
-    <ion-title>user</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-
+  <ion-scroll scrollY="true" *ngIf="data">
+    <div [ngSwitch]="segment">
+      <div *ngSwitchCase="'replies'">
+        <div class="_item theme-border theme-font clearfix" *ngFor="let item of data.recent_replies" (click)="openItem(item.id)">
+          <span (click)="openUser(item.author.loginname)" class="avatar">
+              <img [src]="item.author.avatar_url"/>
+          </span>
+          <span class="right">
+              <div class="title">{{item.title}}</div>
+              <div class="name">
+                  <span>{{item.author.loginname}}</span>
+                  <span class="float-r">{{item.last_reply_at | amAgoTime}}</span>
+              </div>
+          </span>
+        </div>
+      </div>
+      <div *ngSwitchCase="'topics'">
+        <div class="_item theme-border theme-font clearfix" *ngFor="let item of data.recent_topics" (click)="openItem(item.id)">
+          <span (click)="openUser(item.author.loginname)" class="avatar">
+              <img [src]="item.author.avatar_url"/>
+          </span>
+          <span class="right">
+              <div class="title">{{item.title}}</div>
+              <div class="name">
+                  <span>{{item.author.loginname}}</span>
+                  <span class="float-r">{{item.last_reply_at | amAgoTime}}</span>
+              </div>
+          </span>
+        </div>
+      </div>
+      <div *ngSwitchCase="'collect'">
+        <div class="_item theme-border theme-font clearfix" *ngFor="let item of data.collect" (click)="openItem(item.id)">
+          <span (click)="openUser(item.author.loginname)" class="avatar">
+              <img [src]="item.author.avatar_url"/>
+          </span>
+          <span class="right">
+              <div class="title">{{item.title}}</div>
+              <div class="name">
+                  <span>{{item.author.loginname}}</span>
+                  <span class="float-r">{{item.last_reply_at | amAgoTime}}</span>
+              </div>
+          </span>
+        </div>
+      </div>
+    </div>
+  </ion-scroll>
 </ion-content>
+

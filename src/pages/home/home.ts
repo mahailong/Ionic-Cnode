@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController, Events } from 'ionic-angular';
-import { Observable } from 'rxjs';
 import 'rxjs/Rx'
 
 import { ArticlePage } from '../article/article';
 import { PublishPage } from '../publish/publish';
-import { UserPage } from '../user/user'
+import { UserPage } from '../user/user';
+import { LoginPage } from '../login/login';
 
 import { TopicService } from '../../providers/topic';
 import { UtilService } from '../../providers/util';
@@ -35,8 +35,8 @@ export class HomePage {
 
   ionViewDidLoad() {
     this.topicService.getTopics(this.params).subscribe(data => this.topics = data);
-    this.topicService.tabEvent.subscribe(tab => {
-      this.params.tab = tab
+    this.events.subscribe('tab', kay => {
+      this.params.tab = kay
       this.topicService.getTopics(this.params).subscribe(data => this.topics = data);
     }
     )
@@ -67,21 +67,19 @@ export class HomePage {
     }, 500);
   }
 
-  openItem(id) {
-    this.navCtrl.push(ArticlePage, {id});
+  openItem(topic_id) {
+    this.navCtrl.push(ArticlePage, {topic_id});
   }
 
-  openUserPage(loginname: string, event) {
+  openUser(loginname: string ,event) {
     this.navCtrl.push(UserPage, {loginname});
     event.stopPropagation();
   }
 
   openPublish() {
-    if (this.user) {
-      this.navCtrl.push(PublishPage);
-    }
-    else {
-      this.utilService.toast('请登录后发帖');
-    }
+    this.utilService.checkLogin(
+      () => this.navCtrl.push(PublishPage),
+      () => this.navCtrl.push(LoginPage)
+    );
   }
 }
